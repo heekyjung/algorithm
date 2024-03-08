@@ -83,34 +83,36 @@ print("-"*40)
 print("병 합 정 렬")
 
 
-def merge(left_list, right_list):
+def merge(left, right):
     merged_list = []
 
-    while left_list or right_list:  # 두 리스트가 모두 비어있으면, while문 종료
-        if not left_list:  # 리스트 한쪽이 빈 경우, 나머지 리스트를 전부 넣는 코드 (없으면 out of value)
-            merged_list += right_list
-            right_list = False
-        elif not right_list:
-            merged_list += left_list
-            left_list = False
+    while left or right:  # 두 리스트가 모두 비어있으면, while문 종료
+        if not left:  # 리스트 한쪽이 빈 경우, 나머지 리스트를 전부 넣는 코드 (없으면 out of value)
+            merged_list += right
+            right = False
+
+        elif not right:
+            merged_list += left
+            left = False
+
         else:
-            if left_list[0] >= right_list[0]:  # right 값이 더 작으면
-                merged_list.append(right_list[0])  # right 값을 넣고 뺀다
-                right_list.pop(0)
+            if left[0] >= right[0]:  # right 값이 더 작으면
+                merged_list.append(right[0])  # right 값을 넣고 뺀다
+                right.pop(0)
+
             else:
-                merged_list.append(left_list[0])
-                left_list.pop(0)
+                merged_list.append(left[0])
+                left.pop(0)
 
     print(f"병합: {merged_list}")
     return merged_list
 
 
-def merge_sort(num_list):
-    length = len(num_list)
-    mid = (length // 2 + 1 if length %
-           2 else length // 2)  # 원소 개수의 홀짝 여부에 따라 중앙값 설정
+def merge_sort(arr):
+    length = len(arr)
+    mid = length // 2  # 원소 개수의 홀짝 여부에 따라 중앙값 설정
 
-    left, right = num_list[:mid], num_list[mid:]  # 두 리스트에 나눠서 담기
+    left, right = arr[:mid], arr[mid:]  # 두 리스트에 나눠서 담기
     print(left, right)
 
     if mid == 1:  # 원소 개수가 한개가 되면 병합 (중앙값이 1이면 양쪽 원소가 1개씩)
@@ -124,4 +126,3 @@ def merge_sort(num_list):
 
 temp_list = [54, 34, 41, 89, 67, 16, 52, 23, 3]
 print(merge_sort(temp_list))
-
