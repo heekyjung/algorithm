@@ -21,11 +21,8 @@ def cal(answer=numbers[0], idx=1):
                 cal(answer - numbers[idx], idx + 1)
             elif i == 2:  # 곱셈
                 cal(answer * numbers[idx], idx + 1)
-            elif i == 3:  # 나눗셈
-                if answer >= 0:
-                    cal(answer // numbers[idx], idx + 1)
-                else:  # answer가 음수일 때 변환해서 정수로 계산이 안되어 변환 필요
-                    cal(-(-answer // numbers[idx]), idx + 1)
+            elif i == 3:  # 나눗셈 (answer가 음수일 때 변환해서 정수로 계산이 안되어 변환 필요)
+                cal(int(answer / numbers[idx]), idx + 1)
             operators[i] += 1
 
 
