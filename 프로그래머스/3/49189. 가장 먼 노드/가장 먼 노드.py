@@ -6,13 +6,15 @@ from collections import deque
 def solution(n, edge):
     # 노드 1부터 각 노드까지의 거리 리스트
     distances = [0] * (n+1)
+    # [0, 0, 0, ...]
     # 각 노드에서 연결된 노드 번호 리스트
     graph = [[] for _ in range(n+1)]
     # 연결된 노드 정보 저장
     for e in edge:
         graph[e[0]].append(e[1])
         graph[e[1]].append(e[0])
-    
+    # [[],[3,2],[3,1,4,5],[6,4,2,1],[3,2],[2],[3]]
+
     queue = deque()
     queue.append(1)
     distances[1] = 1
@@ -25,6 +27,7 @@ def solution(n, edge):
                 distances[linked] = distances[now] + 1
                 queue.append(linked)
     
+    # [0,1,2,2,3,3,3]
     answer = distances.count(max(distances))
     
     return answer
