@@ -1,4 +1,3 @@
-from collections import deque
 def solution(triangle):
     height = len(triangle)    
     answers = [[0 for _ in range(len(tri))] for tri in triangle]
