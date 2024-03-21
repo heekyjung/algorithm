@@ -30,7 +30,7 @@ def solution(arrows):
             
             x, y = nx, ny
     
-    #print(graph)
+    # print(graph)
     
     return room
 
