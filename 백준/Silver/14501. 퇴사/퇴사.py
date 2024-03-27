@@ -6,7 +6,8 @@ n = int(sys.stdin.readline())
 schedules = [[] for _ in range(n+1)]
 for i in range(1, n+1):
     schedules[i] = list(map(int, sys.stdin.readline().split()))
-# [[], [5, 50], [4, 40], [3, 30], [2, 20], [1, 10], [1, 10], [2, 20], [3, 30], [4, 40], [5, 50]]
+# [[], [3, 10], [5, 20], [1, 10], [1, 20], [2, 15], [4, 40], [2, 200]]
+print(schedules)
 
 dp = [0 for i in range(n+2)]
 
@@ -15,7 +16,8 @@ for i in range(n, 0, -1):
     if i + schedules[i][0] - 1 > n:  # 퇴사일보다 오래 걸리면
         dp[i] = dp[i+1]
     else:  # 퇴사일보다 짧게 걸리면
-        dp[i] = max(dp[i+1], schedules[i][1] + dp[i + schedules[i][0]])
-    #print(dp)
+        dp[i] = max(schedules[i][1] + dp[i + schedules[i][0]], dp[i+1])
+    print(i)
+    print(dp)
 
 print(dp[1])
