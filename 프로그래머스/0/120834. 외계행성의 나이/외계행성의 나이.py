@@ -1,0 +1,7 @@
+def solution(age):
+    age_list = [int(a) for a in str(age)]
+    age_dict = {0:'a', 1:'b', 2:'c', 3:'d', 4:'e', 5:'f', 6:'g', 7:'h', 8:'i', 9:'j'}
+    answer = ""
+    for a in age_list:
+        answer += age_dict[a]
+    return answer
